@@ -5,7 +5,7 @@ of the 42 curriculum by sosanche*
 </h1>
 
 <p align="center">
-  <img src="./img/index.png" width="650" height="240">
+  <img src="./img/index.png" width="1400" height="380">
 </p>
 
 ## Description
