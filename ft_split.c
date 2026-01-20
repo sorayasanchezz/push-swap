@@ -6,13 +6,13 @@
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 14:10:26 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/16 13:32:19 by soraya           ###   ########.fr       */
+/*   Updated: 2026/01/19 17:42:42 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_free(char **array)
+static void	ft_free_split(char **array)
 {
 	int	j;
 
@@ -55,7 +55,7 @@ static char	**ft_write(char const *s, char c, char **array)
 			array[num1] = ft_substr(s, start, (i + 1 - start));
 			if (!array[num1])
 			{
-				ft_free(array);
+				ft_free_split(array);
 				return (NULL);
 			}
 			num1++;

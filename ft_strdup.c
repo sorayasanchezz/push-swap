@@ -1,47 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 12:44:39 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/20 14:02:53 by soraya           ###   ########.fr       */
+/*   Created: 2025/10/14 23:11:13 by soraya            #+#    #+#             */
+/*   Updated: 2026/01/19 16:59:57 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_free(char ***input)
+char	*ft_strdup(const char *s)
 {
-	int	i;
-	
-	i = 0;
-	if (!input || !*input)
-		return ;
-	while ((*input)[i])
-	{
-		free((*input)[i]);
-		i++;
-	}
-	free(*input);
-	*input = NULL;
-}
-void	error_exit(char ***input)
-{
-	ft_free(input);
-	write(2, "Error\n", 6);
-	exit(1);
-}
+	char	*dup;
 
-//función que comprueba que cada argumento dado son números
-
-
-int	main(int argc, char **argv)
-{
-	if (argc < 2)
-		return (0);
-
-	check_args(argc, argv);
-	return (0); 
+	dup = malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!dup)
+		return (NULL);
+	ft_memcpy(dup, s, (ft_strlen(s) + 1) * sizeof(char));
+	return (dup);
 }

@@ -6,55 +6,52 @@
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:18:01 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/16 19:26:40 by soraya           ###   ########.fr       */
+/*   Updated: 2026/01/20 14:14:01 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	check_numbers(int argc, char **input);
+static int	check_numbers(char **input);
+static char	**input_numbers(int argc, char **argv);
+static int	detect_duplicates(char **input);
 
 void	check_args(int argc, char **argv)
 {
 	char	**input;
-
-	// si solo hay un argumento a tomar por culo
-	if (argc == 1)
-	{
-		printf("exit 0");
-		exit(0);
-	}
+	int		i;
+	long	num;
 
 	if (argc == 2)
 		input = ft_split(argv[1], ' ');
 	else
-		input = argv + 1;
-
-	if (check_numbers(argc, input) == 1)
-	{
-		printf("exit 1 porque no pasa el checkkk");
-		exit(1);
-	}
-
-	int i = 0;
+		input = input_numbers(argc - 1, argv + 1);
+	if (!input)
+		error_exit(&input);
+	if (check_numbers(input) == 1)
+		error_exit(&input);
+	i = 0;
 	while (input[i])
 	{
-		printf("%s\n", input[i]);
+		num = ft_atol(input[i]);
+		if (num < INT_MIN || num > INT_MAX)
+			error_exit(&input);
 		i++;
 	}
+	if (detect_duplicates(input) == 1)
+		error_exit(&input);
+	ft_free(&input);
 }
 
-static int	check_numbers(int argc, char **input)
+static int	check_numbers(char **input)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	if (argc < 2)
-		return (1);
 	while (input[i])
 	{
-		if (input[i][0] == 0)
+		if (!input[i][0])
 			return (1);
 		j = 0;
 		if ((input[i][j] == '+' || input[i][j] == '-')
@@ -63,6 +60,54 @@ static int	check_numbers(int argc, char **input)
 		while (input[i][j])
 		{
 			if (input[i][j] < '0' || input[i][j] > '9')
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+static char	**input_numbers(int argc, char **argv)
+{
+	char	**input;
+	int		i;
+
+	i = 0;
+	input = malloc(sizeof(char *) * (argc + 1));
+	if (!input)
+		return (NULL);
+	
+	while (i != argc)
+	{
+		input[i] = ft_strdup(argv[i]);
+		if (!input[i])
+		{
+			ft_free(&input);
+			return (NULL);	
+		}
+		i++;
+	}
+	input[i] = 0;
+	return (input);
+}
+
+static int	detect_duplicates(char **input)
+{
+	int	i;
+	int	j;
+	long	long_i;
+	long	long_j;
+
+	i = 0;
+	while (input[i])
+	{
+		long_i = ft_atol(input[i]);
+		j = i + 1;
+		while (input[j])
+		{
+			long_j = ft_atol(input[j]);
+			if (long_i == long_j)
 				return (1);
 			j++;
 		}
