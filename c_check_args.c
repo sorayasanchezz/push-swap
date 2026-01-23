@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
+/*   c_check_args.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:18:01 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/20 14:14:01 by soraya           ###   ########.fr       */
+/*   Updated: 2026/01/23 17:47:46 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ static int	check_numbers(char **input);
 static char	**input_numbers(int argc, char **argv);
 static int	detect_duplicates(char **input);
 
-void	check_args(int argc, char **argv)
+char	**check_args(int argc, char **argv)
 {
 	char	**input;
 	int		i;
 	long	num;
 
+	if (argc < 2)
+		exit(0);
 	if (argc == 2)
 		input = ft_split(argv[1], ' ');
 	else
@@ -40,7 +42,7 @@ void	check_args(int argc, char **argv)
 	}
 	if (detect_duplicates(input) == 1)
 		error_exit(&input);
-	ft_free(&input);
+	return (input);
 }
 
 static int	check_numbers(char **input)
@@ -77,14 +79,13 @@ static char	**input_numbers(int argc, char **argv)
 	input = malloc(sizeof(char *) * (argc + 1));
 	if (!input)
 		return (NULL);
-	
 	while (i != argc)
 	{
 		input[i] = ft_strdup(argv[i]);
 		if (!input[i])
 		{
 			ft_free(&input);
-			return (NULL);	
+			return (NULL);
 		}
 		i++;
 	}
@@ -94,8 +95,8 @@ static char	**input_numbers(int argc, char **argv)
 
 static int	detect_duplicates(char **input)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	long	long_i;
 	long	long_j;
 
@@ -114,4 +115,18 @@ static int	detect_duplicates(char **input)
 		i++;
 	}
 	return (0);
+}
+int	is_sorted(t_stack *stack)
+{
+	t_node	*tmp;
+
+	tmp = stack->top;
+	while (tmp && tmp->next)
+	{
+		if (tmp->value > tmp->next->value)
+			return (0);
+		tmp = tmp->next;
+	}
+	ft_free_stack(stack);
+	exit(0);
 }

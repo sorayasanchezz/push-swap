@@ -5,7 +5,7 @@ of the 42 curriculum by sosanche*
 </h1>
 
 <p align="center">
-  <img src="./img/index.png" width="1400" height="380">
+  <img src="./img/index.png" height="380" style="border-radius: 12px;">
 </p>
 
 ## Description
@@ -19,7 +19,7 @@ En este proyecto vamos a tener dos stacks:
 Intentando utilizar el menor número de acciones, al final del programa podrás ver los movimientos realizados, los cuáles habrán hecho que los números de Stack A estarán ordenados de menor a mayor *(sin usar sort())*.
 
 <p align="center">
-  <img src="./img/push-pop.png" width="475" height="290">
+  <img src="./img/push-pop.png" height="290" style="border-radius: 12px;">
 </p>
 
 ## Instructions
@@ -30,24 +30,12 @@ Antes de empezar, hice la estructura del repo, que incluye: Makefile, Readme y e
 
 - **Método:** este ejercicio se puede hacer con arrays o con listas enlazadas, yo lo he hecho con **lista bidireccional** ya que me parece más fácil para las acciones de rotate y porque quiero aprender a utilizar mejor las listas.
 
-``` c
-struct s_node
-{
-	//número
-	int nbr;
-	//siguiente argumento
-	struct s_node *next;
-	//hago una lista bidireccional, para reverse rotate
-	struct s_node *prev ;
-}
-```
-
 ### 1. Input
 
 - **Argumentos**: este programa toma los argumentos *(los números que quieres ordenar)* por consola, esos números se ordenan de manera que el primero es el top de la pila, he creado una imágen para que sea más visual
 
 <p align="center">
-  <img src="./img/input1.png" width="425" height="330">
+  <img src="./img/input1.png" height="350" style="border-radius: 12px;">
 </p>
 
 - **Errores de argumentos**:
@@ -98,3 +86,35 @@ Error
 ./push-swap.c "43 2 -23 21 -23"
 Error
 ```
+
+6. Despúes del apartado *2. Stacks* cree una función que revisa si los números ya **están ordenados** o no, no tendría sentido avanzar en el programa si ya están ordenados, este caso no es error, return 0.
+
+<p align="center">
+  <img src="./img/test_cases.png" height="480" style="border-radius: 12px;">
+</p>
+
+### 2. Stacks
+
+Como ya he mencionado lo voy a hacer con listas enlazadas
+
+	Una lista enlazada es una cadena de nodos, donde cada nodo apunta al siguiente. Cada nodo almacena un valor void (lo que quieras), en Push Swap un int. La cabeza de la lista es head, y para acceder al tercer número vas a tener que usar esta para recorrer la lista, ya que aquí no se utilizan índices como en los array
+
+Para este ejercicio necesitaremos dos estructuras, la estructura del **stack** y la estructura de cada **nodo**
+
+- **Stack**: aquí voy a guardar el nodo de arriba y el número de nodos que hay, esto lo hago para ahorrarme tener que contar los nodos todo el rato
+- **Nodo**: se compone de el número y la dirección del siguiente nodo
+
+<p align="center">
+  <img src="./img/push.png" height="480" style="border-radius: 12px;">
+</p>
+
+### 3. Operations
+
+#### Swap
+
+Realmente el swap consiste en entender la lógica de que no puedes intercambiar posiciones sin tener en cuenta el enlace, este ejercicio lo he hecho y recomendaría hacerlo con dibujos para entenderlo mejor. A la derecha he puesto un ejemplo de tester, que cubre la función de orden y la de sa
+
+<p align="center">
+  <img src="./img/swap.png" height="480" style="border-radius: 12px;">
+  <img src="./img/test1.png" style="border-radius: 12px;">
+</p>

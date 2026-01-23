@@ -1,44 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   d_free.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 18:36:21 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/16 13:53:10 by soraya           ###   ########.fr       */
+/*   Created: 2026/01/22 17:04:22 by soraya            #+#    #+#             */
+/*   Updated: 2026/01/22 20:57:43 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	ft_free(char ***input)
 {
-	size_t	i;
-	size_t	sizesrc;
+	int	i;
 
-	i = 0;
-	sizesrc = 0;
-	while (src[i])
-		i++;
-	sizesrc = i;
-	i = 0;
-	if (size == 0)
-		return (sizesrc);
-	while (src[i] && i < (size - 1))
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = 0;
-	i = 0;
-	return (sizesrc);
+	i = -1;
+	if (!input || !*input)
+		return ;
+	while ((*input)[++i])
+		free((*input)[i]);
+	free(*input);
+	*input = NULL;
 }
-/* 
-int main(void)
+
+void	error_exit(char ***input)
 {
-    char    str[(8*8)];
-    printf("%ld \n", strlcpy(str, "aaa", 0));
-    printf("%ld \n", ft_strlcpy(str, "aaa", 0));
+	ft_free(input);
+	write(2, "Error\n", 6);
+	exit(1);
 }
-  */
+
+void	ft_free_stack(t_stack *stack)
+{
+	t_node	*tmp;
+
+	if (!stack)
+		return ;
+	while (stack->top)
+	{
+		tmp = stack->top;
+		stack->top = stack->top->next;
+		free(tmp);
+	}
+	stack->size = 0;
+}

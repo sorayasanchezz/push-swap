@@ -6,20 +6,59 @@
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 14:10:26 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/19 17:42:42 by soraya           ###   ########.fr       */
+/*   Updated: 2026/01/22 21:22:09 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_free_split(char **array)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	int	j;
+	size_t	i;
+	size_t	sizesrc;
 
-	j = -1;
-	while (array[++j])
-		free(array[j]);
-	free(array);
+	i = 0;
+	sizesrc = 0;
+	while (src[i])
+		i++;
+	sizesrc = i;
+	i = 0;
+	if (size == 0)
+		return (sizesrc);
+	while (src[i] && i < (size - 1))
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = 0;
+	i = 0;
+	return (sizesrc);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*sub;
+	size_t	size;
+
+	if (!s)
+		return (NULL);
+	if (start >= ft_strlen(s))
+	{
+		sub = malloc(1);
+		if (!sub)
+			return (NULL);
+		sub[0] = '\0';
+		return (sub);
+	}
+	if (len <= ft_strlen(&s[start]))
+		size = len;
+	else
+		size = ft_strlen(&s[start]);
+	sub = malloc(size + 1);
+	if (!sub)
+		return (NULL);
+	ft_strlcpy(sub, &s[start], size + 1);
+	return (sub);
 }
 
 static int	ft_wordcount(char const *s, char c)
@@ -55,7 +94,7 @@ static char	**ft_write(char const *s, char c, char **array)
 			array[num1] = ft_substr(s, start, (i + 1 - start));
 			if (!array[num1])
 			{
-				ft_free_split(array);
+				ft_free(&array);
 				return (NULL);
 			}
 			num1++;

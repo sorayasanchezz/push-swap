@@ -1,47 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   testeos.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 12:44:39 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/20 14:02:53 by soraya           ###   ########.fr       */
+/*   Created: 2026/01/22 20:46:05 by soraya            #+#    #+#             */
+/*   Updated: 2026/01/23 17:28:36 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_free(char ***input)
+void	print_stack(t_stack	*stack)
 {
-	int	i;
-	
-	i = 0;
-	if (!input || !*input)
-		return ;
-	while ((*input)[i])
+	t_node	*tmp;
+
+	tmp = stack->top;
+	if (!stack || !stack->top)
 	{
-		free((*input)[i]);
-		i++;
+		printf("Stack vacío\n");
+		return ;
 	}
-	free(*input);
-	*input = NULL;
-}
-void	error_exit(char ***input)
-{
-	ft_free(input);
-	write(2, "Error\n", 6);
-	exit(1);
-}
-
-//función que comprueba que cada argumento dado son números
-
-
-int	main(int argc, char **argv)
-{
-	if (argc < 2)
-		return (0);
-
-	check_args(argc, argv);
-	return (0); 
+	printf("top -> final: ");
+	while (tmp)
+	{
+		printf("%d ", tmp->value);
+		tmp = tmp->next;
+	}
+	printf("\n");
 }
