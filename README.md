@@ -28,11 +28,11 @@ Intentando utilizar el menor número de acciones, al final del programa podrás 
 
 Antes de empezar, hice la estructura del repo, que incluye: Makefile, Readme y el header base, aunque a medida que avanza el ejercicio hay que ir actualizándolos.
 
-- **Método:** este ejercicio se puede hacer con arrays o con listas enlazadas, yo lo he hecho con **lista bidireccional** ya que me parece más fácil para las acciones de rotate y porque quiero aprender a utilizar mejor las listas.
+- **Método:** este ejercicio se puede hacer con arrays o con listas enlazadas, yo lo he hecho con **lista bidireccional** ya que me parece más fácil para las acciones de *rotate* y porque quiero aprender a utilizar mejor las listas.
 
 ### 1. Input
 
-- **Argumentos**: este programa toma los argumentos *(los números que quieres ordenar)* por consola, esos números se ordenan de manera que el primero es el top de la pila, he creado una imágen para que sea más visual
+- **Argumentos**: este programa toma los argumentos *(los números que quieres ordenar)* que escribes por, esos números se ordenan de manera que el primero es el top de la pila, he creado una imágen para que sea más visual
 
 <p align="center">
   <img src="./img/input1.png" height="350" style="border-radius: 12px;">
@@ -95,9 +95,9 @@ Error
 
 ### 2. Stacks
 
-Como ya he mencionado lo voy a hacer con listas enlazadas
+Como ya he mencionado lo voy a hacer con listas enlazadas:
 
-	Una lista enlazada es una cadena de nodos, donde cada nodo apunta al siguiente. Cada nodo almacena un valor void (lo que quieras), en Push Swap un int. La cabeza de la lista es head, y para acceder al tercer número vas a tener que usar esta para recorrer la lista, ya que aquí no se utilizan índices como en los array
+*Una lista enlazada es una cadena de nodos, donde cada nodo apunta al siguiente. Cada nodo almacena un valor void (lo que quieras), en Push Swap un int. La cabeza de la lista es head, y para acceder al tercer número vas a tener que usar esta para recorrer la lista, ya que aquí no se utilizan índices como en los array*
 
 Para este ejercicio necesitaremos dos estructuras, la estructura del **stack** y la estructura de cada **nodo**
 
@@ -112,9 +112,21 @@ Para este ejercicio necesitaremos dos estructuras, la estructura del **stack** y
 
 #### Swap
 
-Realmente el swap consiste en entender la lógica de que no puedes intercambiar posiciones sin tener en cuenta el enlace, este ejercicio lo he hecho y recomendaría hacerlo con dibujos para entenderlo mejor. A la derecha he puesto un ejemplo de tester, que cubre la función de orden y la de sa
+Realmente el swap consiste en entender la lógica de que no puedes intercambiar posiciones sin tener en cuenta el enlace, este ejercicio lo he hecho y recomendaría hacerlo con dibujos para entenderlo mejor. 
 
 <p align="center">
   <img src="./img/swap.png" height="480" style="border-radius: 12px;">
+  <br>
+
+Aquí pongo un ejemplo de tester, que cubre la función de orden y la de sa
+
   <img src="./img/test1.png" style="border-radius: 12px;">
+</p>
+
+#### Push_Stack
+
+Para este ejercicio hay que tener en cuenta el *stack->size*. 
+
+<p align="center">
+  <img src="./img/push_stack.png" height="480" style="border-radius: 12px;">
 </p>
