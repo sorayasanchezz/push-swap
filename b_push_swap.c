@@ -6,7 +6,7 @@
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 12:44:39 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/23 17:48:00 by soraya           ###   ########.fr       */
+/*   Updated: 2026/01/24 19:44:30 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(int argc, char **argv)
 	ft_free(&input);
 	is_sorted(&a);
 	ft_free_stack(&a);
+	ft_free_stack(&b);
 	return (0);
 }
 

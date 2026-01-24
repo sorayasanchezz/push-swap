@@ -6,7 +6,7 @@
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 12:44:42 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/24 17:50:22 by soraya           ###   ########.fr       */
+/*   Updated: 2026/01/24 19:35:50 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,9 @@ void	ss(t_stack *a, t_stack *b);
 
 void	pa(t_stack *a, t_stack *b);
 void	pb(t_stack *a, t_stack *b);
+
+void	ra(t_stack *a);
+void	rb(t_stack *b);
+void	rr(t_stack *a, t_stack *b);
 
 #endif

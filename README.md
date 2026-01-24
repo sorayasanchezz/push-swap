@@ -117,11 +117,11 @@ Realmente el swap consiste en entender la lógica de que no puedes intercambiar 
 <p align="center">
   <img src="./img/swap.png" height="480" style="border-radius: 12px;">
   <br>
-
-Aquí pongo un ejemplo de tester, que cubre la función de orden y la de sa
-
-  <img src="./img/test1.png" style="border-radius: 12px;">
 </p>
+
+Aquí pongo un ejemplo de tester, que cubre las funciones *is_sorted* y *sa*, para los test he creado una función que imprima una lista, y si esa lista está vacía lo escriba por pantalla.
+
+![test1](./img/test1.png)
 
 #### Push_Stack
 
@@ -129,4 +129,65 @@ Para este ejercicio hay que tener en cuenta el *stack->size*.
 
 <p align="center">
   <img src="./img/push_stack.png" height="480" style="border-radius: 12px;">
+</p>
+
+Aquí otra idea de test, es buena idea ir haciendo **valgrind** mientras haces los test
+
+``` c
+print_stack(&a);
+print_stack(&b);
+
+pb(&a, &b);
+pb(&a, &b);
+
+print_stack(&a);
+print_stack(&b);
+
+sb(&b);
+
+print_stack(&a);
+print_stack(&b);
+
+pa(&a, &b);
+
+print_stack(&a);
+print_stack(&b);
+```
+<p>
+  <img src="./img/test2_2.png" height="350">
+  <img src="./img/test2.png" height="250">
+</p>
+
+### Rotate
+
+<p align="center">
+  <img src="./img/rotate.png" style="border-radius: 12px;">
+</p>
+
+Idea de test con el resultado:
+
+``` c
+print_stack(&a);
+print_stack(&b);
+
+pb(&a, &b);
+pb(&a, &b);
+
+print_stack(&a);
+print_stack(&b);
+
+ra(&a);
+rb(&b);
+
+print_stack(&a);
+print_stack(&b);
+
+rr(&a, &b);
+
+print_stack(&a);
+print_stack(&b);
+```
+
+<p>
+  <img src="./img/test3.png">
 </p>

@@ -6,7 +6,7 @@
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:18:01 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/23 17:47:46 by soraya           ###   ########.fr       */
+/*   Updated: 2026/01/24 19:40:12 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,6 @@ int	is_sorted(t_stack *stack)
 		tmp = tmp->next;
 	}
 	ft_free_stack(stack);
+	write(1, "Sorted\n", 7);
 	exit(0);
 }
