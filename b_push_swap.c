@@ -6,71 +6,38 @@
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 12:44:39 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/24 19:44:30 by soraya           ###   ########.fr       */
+/*   Updated: 2026/01/27 15:15:53 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void		init_stack(t_stack *stack);
-static t_node	*create_node(int value);
-static int		push(t_stack *stack, int value);
+static void	select_algorithm(t_stack *a, t_stack *b);
 
 int	main(int argc, char **argv)
 {
 	char	**input;
 	t_stack	a;
 	t_stack	b;
-	int		i;
 
 	input = check_args(argc, argv);
-	init_stack(&a);
-	init_stack(&b);
-	i = 0;
-	while (input[i])
-		i++;
-	while (--i >= 0)
-	{
-		if (!push(&a, ft_atol(input[i])))
-		{
-			ft_free_stack(&a);
-			error_exit(&input);
-		}
-	}
-	ft_free(&input);
+	build_stack_a(input, &a, &b);
 	is_sorted(&a);
+	select_algorithm(&a, &b);
 	ft_free_stack(&a);
 	ft_free_stack(&b);
 	return (0);
 }
-
-static void	init_stack(t_stack *stack)
+static void	select_algorithm(t_stack *a, t_stack *b)
 {
-	stack->top = NULL;
-	stack->size = 0;
-}
-
-static t_node	*create_node(int value)
-{
-	t_node	*node;
-
-	node = malloc(sizeof(t_node));
-	if (!node)
-		return (0);
-	node->value = value;
-	node->next = 0;
-	return (node);
-}
-
-static int	push(t_stack *stack, int value)
-{
-	t_node	*new_node;
-
-	new_node = create_node(value);
-	if (!new_node)
-		return (0);
-	new_node->next = stack->top;
-	stack->top = new_node;
-	stack->size++;
-	return (1);
+	print_stack(a);
+	if (a->size == 2)
+		sa(a);
+	else if (a->size == 3)
+		sort_three(a);
+	else if (a->size == 4)
+		sort_four(a, b);
+	else if (a->size == 5)
+		sort_five(a, b);
+	print_stack(a);
 }

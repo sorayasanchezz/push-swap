@@ -6,14 +6,14 @@
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 15:57:34 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/24 18:12:44 by soraya           ###   ########.fr       */
+/*   Updated: 2026/01/24 20:49:37 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static void	swap(t_stack *stack)
-{	
+{
 	t_node	*first;
 	t_node	*second;
 
@@ -21,7 +21,6 @@ static void	swap(t_stack *stack)
 		return ;
 	first = stack->top;
 	second = stack->top->next;
-
 	first->next = second->next;
 	second->next = first;
 	stack->top = second;

@@ -28,7 +28,7 @@ Intentando utilizar el menor número de acciones, al final del programa podrás 
 
 Antes de empezar, hice la estructura del repo, que incluye: Makefile, Readme y el header base, aunque a medida que avanza el ejercicio hay que ir actualizándolos.
 
-- **Método:** este ejercicio se puede hacer con arrays o con listas enlazadas, yo lo he hecho con **lista bidireccional** ya que me parece más fácil para las acciones de *rotate* y porque quiero aprender a utilizar mejor las listas.
+- **Método:** este ejercicio se puede hacer con arrays o con listas enlazadas, yo lo he hecho con **listas** porque me parece más eficiente y también quiero aprender a utilizar mejor las listas.
 
 ### 1. Input
 
@@ -121,6 +121,13 @@ Realmente el swap consiste en entender la lógica de que no puedes intercambiar 
 
 Aquí pongo un ejemplo de tester, que cubre las funciones *is_sorted* y *sa*, para los test he creado una función que imprima una lista, y si esa lista está vacía lo escriba por pantalla.
 
+``` c
+print_stack(&a);
+sa(&a);
+print_stack(&a);
+is_sorted(&a);
+```
+
 ![test1](./img/test1.png)
 
 #### Push_Stack
@@ -161,7 +168,7 @@ print_stack(&b);
 ### Rotate
 
 <p align="center">
-  <img src="./img/rotate.png" style="border-radius: 12px;">
+  <img src="./img/rotate.png" style="border-radius: 12px">
 </p>
 
 Idea de test con el resultado:
@@ -190,4 +197,80 @@ print_stack(&b);
 
 <p>
   <img src="./img/test3.png">
+</p>
+
+### Reverse Rotate
+
+<p align="center">
+  <img src="./img/reverse_rotate.png" style="border-radius: 12px">
+</p>
+
+Idea de test:
+
+``` c
+print_stack(&a);
+print_stack(&b);
+
+pb(&a, &b);
+pb(&a, &b);
+pb(&a, &b);
+
+print_stack(&a);
+print_stack(&b);
+
+rra(&a);
+rrb(&b);
+
+print_stack(&a);
+print_stack(&b);
+
+rrr(&a, &b);
+
+print_stack(&a);
+print_stack(&b);
+
+rr(&a, &b);
+
+print_stack(&a);
+print_stack(&b);
+```
+
+<p>
+  <img src="./img/test4.png">
+</p>
+
+## 4.Algorithms
+
+Antes de hacer los algoritmos hay que saber a que función enviarlos depende de cuántos números haya, depende de como se haga esto es importante entender la diferencia:
+
+``` c
+t_stack a
+if (a.size == 2)
+```
+
+``` c
+t_stack *stack; // dirección de memoria a stack &a
+if (a->size == 2)
+```
+
+### Two Arguments
+
+Voy a empezar ordenando de menos argumentos a más, para empezar desde lo fácil, realmente en mi *sort_two* no me hace falta validar que no esté ordenado, porque ya lo ha comprobado en *is_sorted*, es muy sencillo, sólo hago un *swap*
+
+### Three Arguments
+
+Para pensar los tres argumentos hay que tener en cuenta que hay 6 combinaciones posibles. Ya tuve en cuenta que estuviera ordenado en *is_sorted*
+
+<p>
+  <img src="./img/sort_three.png" height="350">
+</p>
+
+### Four-Five Arguments
+
+Lo más eficiente con 4-5 argumentos es pasar el número o los dos números más pequeños al *stack b*, para mandar *stack a* a *sort_three*, y después devolver el número pequeño a su stack. En el caso de 5 como pasas el número más pequeño, y luego el segundo más pequeño ya están ordenados al pasarlos.
+
+Para hacer esto he creado una función que me manda el índice del número más pequeño, dependiendo de si está en la parte superior o en la parte inferior *(dividiendo size/2)* hago *ra* o *rra*, esta parte se puede apreciar mejor en el dibujo que he hecho:
+
+<p>
+  <img src="./img/sort_four_five.png" height="350">
 </p>

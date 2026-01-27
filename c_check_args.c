@@ -6,7 +6,7 @@
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:18:01 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/24 19:40:12 by soraya           ###   ########.fr       */
+/*   Updated: 2026/01/24 20:50:35 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ static int	detect_duplicates(char **input)
 	}
 	return (0);
 }
+
 int	is_sorted(t_stack *stack)
 {
 	t_node	*tmp;

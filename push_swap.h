@@ -6,7 +6,7 @@
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 12:44:42 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/24 19:35:50 by soraya           ###   ########.fr       */
+/*   Updated: 2026/01/27 15:15:28 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_stack
 }	t_stack;
 
 int		main(int argc, char **argv);
+void	build_stack_a(char **input, t_stack *a, t_stack *b);
+
 long	ft_atol(const char *nptr);
 char	**ft_split(char const *s, char c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
@@ -48,12 +50,18 @@ int		is_sorted(t_stack *stack);
 void	sa(t_stack *a);
 void	sb(t_stack *b);
 void	ss(t_stack *a, t_stack *b);
-
 void	pa(t_stack *a, t_stack *b);
 void	pb(t_stack *a, t_stack *b);
-
 void	ra(t_stack *a);
 void	rb(t_stack *b);
 void	rr(t_stack *a, t_stack *b);
+void	rra(t_stack *a);
+void	rrb(t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
+
+void	sort_two(t_stack *a);
+void	sort_three(t_stack *a);
+void	sort_four(t_stack *a, t_stack *b);
+void	sort_five(t_stack *a, t_stack *b);
 
 #endif
