@@ -6,7 +6,7 @@
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:09:37 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/27 14:14:07 by soraya           ###   ########.fr       */
+/*   Updated: 2026/01/27 20:03:34 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	sort_three(t_stack *a)
 	first = a->top->value;
 	second = a->top->next->value;
 	third = a->top->next->next->value;
-
 	if (first > second && second < third && third > first)
 		sa(a);
 	else if (first < second && second > third && third < first)

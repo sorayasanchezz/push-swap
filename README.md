@@ -239,7 +239,7 @@ print_stack(&b);
   <img src="./img/test4.png">
 </p>
 
-## 4.Algorithms
+## 4.Sort Small
 
 Antes de hacer los algoritmos hay que saber a que función enviarlos depende de cuántos números haya, depende de como se haga esto es importante entender la diferencia:
 
@@ -274,3 +274,37 @@ Para hacer esto he creado una función que me manda el índice del número más 
 <p>
   <img src="./img/sort_four_five.png" height="350">
 </p>
+
+## 5. Radix Sort
+
+### Description
+
+1. Primero se convierten los valores en índices, el indice 0 será el número más pequeño, independientemente de la posición
+
+*Para esto he creado un bucle que compare cada nodo con todos los nodos, cuando encuentre un número menor al suyo, suma uno a su índice. De esta manera el número más grande ganará todas las comparaciones y el pequeño ninguna.*
+
+``` c 
+max >>= 1; // desplaza 1 bit de max, en lo práctico es lo mismo que dividirlo entre 2 y desechar el resto
+```
+
+2. Luego necesito saber cuántos bits necesito para representar los índices, para ver los bits máximos calculamos con el máximo índice *(top->size - 1)*. Para saber el número de bits he hecho un bucle que sume uno  cada vez que le quito un número en la izquierda.
+
+3. Radix ordena con una lógica de bits, que consiste resumidamente en ir mirando los bits del índice de derecha a izquierda:
+
+- Bit 0: pb
+- Bit 1 : ra
+
+*De esta manera dejamos los números más altos debajo de a*
+
+<p>
+  <img src="./img/radix_sort.png" height="350">
+</p>
+
+https://42-fran-byte-f94097.gitlab.io/docs/push_swap/push_swap-approach-es/#/
+https://www.youtube.com/watch?v=wRvipSG4Mmk
+
+a. yigit ogun
+
+https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
+
+https://42-cursus.gitbook.io/guide/2-rank-02/push_swap/building-the-thing

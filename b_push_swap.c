@@ -6,7 +6,7 @@
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 12:44:39 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/27 15:15:53 by soraya           ###   ########.fr       */
+/*   Updated: 2026/01/30 09:52:57 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	main(int argc, char **argv)
 	ft_free_stack(&b);
 	return (0);
 }
+
 static void	select_algorithm(t_stack *a, t_stack *b)
 {
-	print_stack(a);
 	if (a->size == 2)
 		sa(a);
 	else if (a->size == 3)
@@ -39,5 +39,6 @@ static void	select_algorithm(t_stack *a, t_stack *b)
 		sort_four(a, b);
 	else if (a->size == 5)
 		sort_five(a, b);
-	print_stack(a);
+	else if (a->size > 5)
+		radix_sort(a, b);
 }

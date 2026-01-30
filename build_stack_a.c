@@ -6,21 +6,24 @@
 /*   By: soraya <soraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 13:55:22 by soraya            #+#    #+#             */
-/*   Updated: 2026/01/26 14:01:40 by soraya           ###   ########.fr       */
+/*   Updated: 2026/01/30 10:20:57 by soraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	init_stacks(t_stack *a, t_stack *b);
-static int	push(t_stack *stack, int value);
+static int		push(t_stack *stack, int value);
 static t_node	*create_node(int value);
+static int		get_value(t_stack *stack, int index);
 
 void	build_stack_a(char **input, t_stack *a, t_stack *b)
 {
 	int	i;
 
-	init_stacks(a, b);
+	a->top = NULL;
+	a->size = 0;
+	b->top = NULL;
+	b->size = 0;
 	i = 0;
 	while (input[i])
 		i++;
@@ -33,14 +36,6 @@ void	build_stack_a(char **input, t_stack *a, t_stack *b)
 		}
 	}
 	ft_free(&input);
-}
-
-static void	init_stacks(t_stack *a, t_stack *b)
-{
-	a->top = NULL;
-	a->size = 0;
-	b->top = NULL;
-	b->size = 0;
 }
 
 static int	push(t_stack *stack, int value)
@@ -64,6 +59,40 @@ static t_node	*create_node(int value)
 	if (!node)
 		return (0);
 	node->value = value;
-	node->next = 0;
+	node->next = NULL;
+	node->index = -1;
 	return (node);
+}
+
+void	index_stack(t_stack *a)
+{
+	t_node	*node;
+	int		i;
+	int		index;
+
+	node = a->top;
+	while (node)
+	{
+		index = 0;
+		i = -1;
+		while (++i < a->size)
+		{
+			if (get_value(a, i) < node->value)
+				index++;
+		}
+		node->index = index;
+		node = node->next;
+	}
+}
+
+static int	get_value(t_stack *stack, int index)
+{
+	t_node	*node;
+	int		i;
+
+	i = -1;
+	node = stack->top;
+	while (++i < index)
+		node = node->next;
+	return (node->value);
 }
